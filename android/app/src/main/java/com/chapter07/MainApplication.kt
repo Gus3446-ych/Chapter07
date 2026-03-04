@@ -4,8 +4,12 @@ import android.app.Application
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
+import com.facebook.react.ReactNativeHost
+import com.facebook.react.ReactPackage
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
+import com.facebook.react.defaults.DefaultReactNativeHost
+import com.facebook.soloader.SoLoader
 
 class MainApplication : Application(), ReactApplication {
 
@@ -16,9 +20,11 @@ class MainApplication : Application(), ReactApplication {
         PackageList(this).packages.apply {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // add(MyReactNativePackage())
+            add(NativeInfoModulePackage()); // 추가
         },
     )
   }
+
 
   override fun onCreate() {
     super.onCreate()
